@@ -17,7 +17,13 @@ app.use(router);
 
 // Utilización de las rutas.
 router.get('/message', (request, response) => {
-    Response.success(request, response, "Mostrando Todos los mensajes.");
+    console.log(request.query);
+    if(request.query == 'ok'){
+        Response.error(request, response, "Mostrando Todos los mensajes.", 400, "Problema con la base de datos.");
+    }   
+    else{
+        Response.success(request, response, "Mostrando Todos los mensajes.", 200);
+    }
 });
 
 router.post('/message', (request, response) => {
