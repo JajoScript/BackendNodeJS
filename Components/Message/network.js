@@ -8,13 +8,13 @@ const router = express.Router();
 
 // Utilización de las rutas.
 router.get('/', (request, response) => {
-    console.log(request.query);
-    if(request.query == 'ok'){
-        Response.error(request, response, "Mostrando Todos los mensajes.", 400, "Problema con la base de datos.");
-    }   
-    else{
-        Response.success(request, response, "Mostrando Todos los mensajes.", 200);
-    }
+    controller.getMessages()
+    .then((messageList) => {
+        Response.success(request,response, messageList, 200);
+    })
+    .catch(event => {
+        Response.error(request, response, "Unexpected Error", 500, event);
+    });
 });
 
 router.post('/', (request, response) => {
@@ -23,7 +23,7 @@ router.post('/', (request, response) => {
         Response.success(request, response, fullMessage, 201);
     })
     .catch(event => {
-        Response.error(request, response, "Informacion faltante", 400, "Problemas de información del usuario.");
+        Response.error(request, response, "Informacion faltante", 400, event);
     });
 });
 

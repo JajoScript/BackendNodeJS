@@ -98,3 +98,7 @@ Utilizando la siguiente linea:
 Configuraremos la aplicación para que utilice los archivos estaticos de la carpeta *public*, esta carpeta puede utilizar el nombre que tu quieras, pero es un estandar utilizar el nombre de *public*.
 
 ***
+## Mocks
+Es una simulación de la base de datos.
+
+***

@@ -1,3 +1,6 @@
+// Importacion de modulos.
+const store = require("./store");
+
 // Creación de funciones.
 function addMessage(user, message) {
     // Utilizacion de promesas.
@@ -18,13 +21,19 @@ function addMessage(user, message) {
                 date: new Date()
             };
             
-            console.log(fullMessage);
+            store.add(fullMessage);
             resolve(fullMessage);
         }
     });
     
 }
 
+function getMessages(){
+    return new Promise((resolve, reject) => {
+        resolve(store.list());
+    });
+}
 module.exports = {
     addMessage,
+    getMessages,
 }
