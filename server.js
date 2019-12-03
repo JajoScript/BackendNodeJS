@@ -40,6 +40,9 @@ router.options('/message', (request, response) => {
     Response.success(request, response, "Configuraciones del mensaje.");
 });
 
+// Uso de Archivos estaticos.
+app.use('/app', express.static('public'));
+
 // Configuración del puerto.
 app.listen(3000);
 

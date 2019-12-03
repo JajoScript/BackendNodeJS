@@ -86,3 +86,15 @@ Del mismo modo podemos enviar **datos estructurados** con:
 El usuario recibira como respuesta un objeto estructurado con la información proporcionada por el servidor.
 
 Podemos combinar cualquiera de los tipos de respuesta anteriores para entregar información concreta.
+
+***
+## Uso de Archivos estaticos.
+Los archivos estaticos pueden ser HTML, CSS, JS.
+los cuales se muestran en la pantalla y es todo lo correspondiente al frontend developer.
+Utilizando la siguiente linea:
+
+    app.use('/app', express.static('public'));
+
+Configuraremos la aplicación para que utilice los archivos estaticos de la carpeta *public*, esta carpeta puede utilizar el nombre que tu quieras, pero es un estandar utilizar el nombre de *public*.
+
+***
