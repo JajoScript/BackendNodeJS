@@ -1,6 +1,7 @@
 // Importación de modulos.
 const express = require('express');
 const bodyParser = require('body-parser');
+const Response = require('./Network/response');
 
 // Creación de la aplicación.
 var app = express();
@@ -16,42 +17,27 @@ app.use(router);
 
 // Utilización de las rutas.
 router.get('/message', (request, response) => {
-    console.log(request.body);
-    console.log(request.headers);
-    response.header({
-        "custom-header" : "custom-value",
-    });
-    console.log(request.query);
-    response.send("Lista de Mensajes.");
+    Response.success(request, response, "Mostrando Todos los mensajes.");
 });
 
 router.post('/message', (request, response) => {
-    response.send("Mensaje Añadido.");
+    Response.success(request, response, "Enviando el mensaje.");
 });
 
 router.patch('/message', (request, response) => {
-    response.send("Mensaje Modificado.");
+    Response.success(request, response, "Modificando el mensaje.");
 });
 
 router.put('/message', (request, response) => {
-    response.send("Mensaje Actualizado.");
-    res.send();
-    res.status(201).send();
-    res.send({
-        'Error': '',
-        'Body': "Actualizado correctamente."
-
-    });
+    Response.success(request, response, "Actualizando el mensaje.");
 });
 
 router.delete('/message', (request, response) => {
-    console.log(request.body);
-    console.log(request.query);
-    response.send("Mensaje Eliminado.", req.body.text);
+    Response.success(request, response, "Eliminando el mensaje.");
 });
 
 router.options('/message', (request, response) => {
-    response.send("Opciones de Mensajeria.");
+    Response.success(request, response, "Configuraciones del mensaje.");
 });
 
 // Configuración del puerto.
