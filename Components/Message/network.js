@@ -1,6 +1,7 @@
 // Importación de modulos.
 const express = require('express');
 const Response = require('../../Network/response');
+const controller = require("./controller");
 
 // Creacion del router.
 const router = express.Router();
@@ -9,7 +10,7 @@ const router = express.Router();
 router.get('/', (request, response) => {
     console.log(request.query);
     if(request.query == 'ok'){
-        Response.error(request, response, "Mostrando Todos los mensajes.", 400, "Problema con la base de");
+        Response.error(request, response, "Mostrando Todos los mensajes.", 400, "Problema con la base de datos.");
     }   
     else{
         Response.success(request, response, "Mostrando Todos los mensajes.", 200);
@@ -17,7 +18,13 @@ router.get('/', (request, response) => {
 });
 
 router.post('/', (request, response) => {
-    Response.success(request, response, "Enviando el mensaje.");
+    controller.addMessage(request.body.user, request.body.message)
+    .then((fullMessage)=>{
+        Response.success(request, response, fullMessage, 201);
+    })
+    .catch(event => {
+        Response.error(request, response, "Informacion faltante", 400, "Problemas de información del usuario.");
+    });
 });
 
 router.patch('/', (request, response) => {
