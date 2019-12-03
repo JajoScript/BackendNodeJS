@@ -33,9 +33,7 @@ con la siguiente linea:
 
 mostramos por consola la informacion enviada como query.
 
-***
-
-## Uso de Querys en las peticiones
+### Uso de Querys en las peticiones
 Ejemplo con la siguiente ruta:
 
 ` localhost:3000/message?orderBy=id&nombre=javier`
@@ -48,7 +46,7 @@ y sus valores:
 - id
 - javier
 
-===
+***
 ## Creacion de Headers personalizados.
 
     response.headers({
@@ -56,3 +54,35 @@ y sus valores:
     });
 
 Con la linea anterior podemos enviar como respuesta una cebecera personalizada, para enviar información.
+
+***
+## Tipos de respuesta: Vacía, Plana, Con datos y Estructurada.
+
+La respuesta más simple es usando una respuesta **plana** con:
+
+    res.send("Todo esta funcionando");
+
+lo que mostrara por pantalla el mensaje que estemos enviando.
+
+Se puede mandar una respuesta **Vacia** con:
+    
+    res.send();
+
+No resultara en error, pero se tiene que tener en cuenta que de cualquier modo se enviara la cabecera con cierta información, lo cual es muy util en ciertos casos.
+
+Al igual que se puede enviar un **numero de estatus** con:
+
+    res.status(201).send();
+
+Los numeros de estatus son un estandar que ayuda a comprender mejor el resultado de la petición que hicimos al servidor, como el ya conocido **404: not found.**
+
+Del mismo modo podemos enviar **datos estructurados** con:
+
+    res.send({
+        'Error': '',
+        'Body': "Actualizado correctamente."
+    });
+
+El usuario recibira como respuesta un objeto estructurado con la información proporcionada por el servidor.
+
+Podemos combinar cualquiera de los tipos de respuesta anteriores para entregar información concreta.

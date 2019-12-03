@@ -35,6 +35,13 @@ router.patch('/message', (request, response) => {
 
 router.put('/message', (request, response) => {
     response.send("Mensaje Actualizado.");
+    res.send();
+    res.status(201).send();
+    res.send({
+        'Error': '',
+        'Body': "Actualizado correctamente."
+
+    });
 });
 
 router.delete('/message', (request, response) => {
