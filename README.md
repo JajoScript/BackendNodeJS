@@ -102,3 +102,40 @@ Configuraremos la aplicación para que utilice los archivos estaticos de la carp
 Es una simulación de la base de datos.
 
 ***
+## Bases de datos.
+MySQL, la más popular y utilizada por su feel con PHP, MySQL es una base de datos relacional, de relaciones.
+
+Las BD relacionales, se basan en tablas, tienen columnas y filas con sus datos relacionados entre si, al ser BD tan grandes, estas BD no escalan y la capacidad de computo se ven afectada por la relacion entre cada tabla.
+
+Las BD no Relacionales, no crear relaciones y sirven con documentos, hay excepciones que si crear relaciones entre documentos sin dejar de ser escalable, como por ejemplo MongoDB.
+
+### Conectar con MongoDB Atlas.
+MongoDB Atlas es un servicio cloud para la gestion y produccion con mongodb.
+
+#### MongoDB URI.
+La URI de Mongo DB tiene este aspecto:
+
+    mongodb+srv://DB_USER:DB_PASSWORD@DB_HOST/DB_NAME
+
+Todo esto, la clave, el host, el usuario y el nombre seran representados en variables de entorno para que en el momento de necesitar un cambios, se pueda hacer de manera rapida y sencilla.
+
+***
+### Uso de parametros en las URL
+Podemos pedir como datos usando parametros en las url, los que traeran dichos datos desde la base de datos, como por ejemplo:
+
+    http://localhost:3000/message/5de74e47727ce4241881db08
+
+En el siguiente ejemplo estamos mandando en la url el valor de un id guardado en nuestra base de datos.
+
+Para recibirlo en nuestra ruta utilizamos:
+
+    router.patch('/:id', (request, response) => {
+        console.log(request.params.id);
+        response.send('ok');
+    });
+
+En este ejemplo estamos usando una ruta *patch* para modificar un dato, dato el cual reconoceremos mediante su *id* (identificador unico) nuestro parametro es *:id* el cual es utilizado en la ruta.
+
+    console.log(request.params.id);
+
+Usando **request.params.id** es que podemos tener el dato entregado por la url.

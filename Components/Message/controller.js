@@ -33,7 +33,21 @@ function getMessages(){
         resolve(store.list());
     });
 }
+
+function updateMessage(id, message){
+    return new Promise(async (resolve, reject) => {
+        console.log(id, message);
+        if(!id || !message){
+            return reject('Información invalida');
+        }
+
+        const result = await store.updateText(id, message);
+
+        resolve(result);
+    });
+}
 module.exports = {
     addMessage,
     getMessages,
+    updateMessage,
 }

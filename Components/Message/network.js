@@ -27,8 +27,16 @@ router.post('/', (request, response) => {
     });
 });
 
-router.patch('/', (request, response) => {
-    Response.success(request, response, "Modificando el mensaje.");
+router.patch('/:id', (request, response) => {
+    console.log(request.params.id);
+
+    controller.updateMessage(request.params.id, request.body.message)
+        .then((data) => {
+            Response.success(request, response, data, 200)
+        })
+        .catch(event => {
+            Response.error(request, response, "Error interno", 500, event);
+        });
 });
 
 router.put('/', (request, response) => {
