@@ -2,6 +2,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./Network/routes');
+const db = require('./db');
+
+// Conexion con la base de datos.
+db("mongodb+srv://jajoscript:1234@cluster0-1ojwl.mongodb.net/Telegrom?retryWrites=true&w=majority");
 
 // Creación de la aplicación.
 var app = express();

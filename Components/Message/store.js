@@ -1,16 +1,7 @@
 // Logica de almacenamiento.
 
 // Importación de modulos.
-const db = require('mongoose');
 const Model = require('./model');
-
-// Conexion con la base de datos.
-db.Promise = global.Promise;
-db.connect('mongodb+srv://jajoscript:1234@cluster0-1ojwl.mongodb.net/Telegrom?retryWrites=true&w=majority', {
-    useUnifiedTopology: true,
-    useNewUrlParser : true
-});
-console.log('[DB] Conectada con exito.')
 
 // Funciones de la base de datos.
 function addMessage (message){
