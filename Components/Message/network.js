@@ -14,8 +14,8 @@ router.get('/', (request, response) => {
     .then((messageList) => {
         Response.success(request,response, messageList, 200);
     })
-    .catch(event => {
-        Response.error(request, response, "Unexpected Error", 500, event);
+    .catch(error => {
+        Response.error(request, response, "Unexpected Error", 500, error);
     });
 });
 
@@ -24,8 +24,8 @@ router.post('/', (request, response) => {
     .then((fullMessage)=>{
         Response.success(request, response, fullMessage, 201);
     })
-    .catch(event => {
-        Response.error(request, response, "Informacion faltante", 400, event);
+    .catch(error => {
+        Response.error(request, response, "Informacion faltante", 400, error);
     });
 });
 
@@ -36,8 +36,8 @@ router.patch('/:id', (request, response) => {
         .then((data) => {
             Response.success(request, response, data, 200)
         })
-        .catch(event => {
-            Response.error(request, response, "Error interno", 500, event);
+        .catch(error => {
+            Response.error(request, response, "Error interno", 500, error);
         });
 });
 
@@ -45,12 +45,15 @@ router.put('/', (request, response) => {
     Response.success(request, response, "Actualizando el mensaje.");
 });
 
-router.delete('/', (request, response) => {
-    Response.success(request, response, "Eliminando el mensaje.");
-});
-
-router.options('/', (request, response) => {
-    Response.success(request, response, "Configuraciones del mensaje.");
+router.delete('/:id', (request, response) => {
+    console.log(request.params.id);
+    controller.deleteMessage(request.params.id)
+        .then(()=>{
+            Response.success(request, response, `Mensaje ${request.params.id}`, 200);
+        })
+        .catch(error => {
+            Response.error(request, response, "Error interno", 500, error);
+        });
 });
 
 // Exportación del modulo router.

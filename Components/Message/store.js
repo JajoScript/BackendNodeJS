@@ -12,10 +12,7 @@ db.connect('mongodb+srv://jajoscript:1234@cluster0-1ojwl.mongodb.net/Telegrom?re
 });
 console.log('[DB] Conectada con exito.')
 
-// Almacenamiento.
-
-
-// Funciones del Mock.
+// Funciones de la base de datos.
 function addMessage (message){
     const myMessage = new Model(message);
     myMessage.save();
@@ -40,9 +37,15 @@ async function updateText(id, message){
     return newMessage;
 }
 
+function removeMessage(id){
+    return Model.deleteOne({
+        _id : id
+    });
+}
+
 module.exports = {
     add : addMessage,
     list : getMessage,
     updateText: updateText,
-    // DELETE
+    remove: removeMessage
 }
