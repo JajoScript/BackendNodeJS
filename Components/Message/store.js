@@ -17,13 +17,16 @@ console.log('[DB] Conectada con exito.')
 
 // Funciones del Mock.
 function addMessage (message){
-    // list.push(message);
     const myMessage = new Model(message);
     myMessage.save();
 }
 
-async function getMessage(){
-    const messages = await Model.find();
+async function getMessage(filterUser){
+    let filter = {};
+    if(filterUser != null){
+        filter = {user: filterUser};
+    }
+    const messages = await Model.find(filter);
     return messages;
 }
 

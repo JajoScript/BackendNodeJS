@@ -8,7 +8,9 @@ const router = express.Router();
 
 // Utilización de las rutas.
 router.get('/', (request, response) => {
-    controller.getMessages()
+    const filterMessages = request.query.user || null;
+    
+    controller.getMessages(filterMessages)
     .then((messageList) => {
         Response.success(request,response, messageList, 200);
     })
