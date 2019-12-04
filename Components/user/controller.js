@@ -14,8 +14,14 @@ function addUser(name){
     return store.add(user);
 }
 
+function getUser(filterUser){
+    return new Promise((resolve, reject) => {
+        resolve(store.get(filterUser));
+    });
+}
 // Exportación del Modulo.
 module.exports = {
     addUser,
+    getUser,
 
 }
