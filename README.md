@@ -166,6 +166,6 @@ Tan sencillo como pasarlo de parametro en la función, para que *multer* sepa de
 ***
 ### WebSockets.
 ¿Que son los webSockets?
-Protocollo WebSockets, distinto a HTTP, informacion en tiempo real, se crea un tunel de información **wss://** desde el cliente y el servidor.
+Protocollo de información masivo WebSockets, distinto a HTTP, informacion en tiempo real, se crea un tunel de información **wss://** desde el cliente y el servidor.
 
 En el momento de llegar información nueva, el usuario envia la nueva información por el tunel, es un tunel reciproco, por lo que cuando el usuario tenga información nueva igual puede enviar esa información a traves del tunel al servidor. 
