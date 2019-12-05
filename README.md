@@ -169,3 +169,17 @@ Tan sencillo como pasarlo de parametro en la función, para que *multer* sepa de
 Protocollo de información masivo WebSockets, distinto a HTTP, informacion en tiempo real, se crea un tunel de información **wss://** desde el cliente y el servidor.
 
 En el momento de llegar información nueva, el usuario envia la nueva información por el tunel, es un tunel reciproco, por lo que cuando el usuario tenga información nueva igual puede enviar esa información a traves del tunel al servidor. 
+
+***
+### tips para escalar nuestro proyecto.
+Para diferentes instancias ya sea produccion o desarrollo, tener un archivo de configuraciones.
+
+Configurar el puerto como una variable de entorno.
+
+Configurar el host como una variables de entorno.
+
+Configurar el directorio de la aplicación como variable de entorno.
+
+En Sintesis, todos los datos que camien, guardarlas en variables de entorno.
+
+Setear variables por defectos en caso de que algo salga mal.
