@@ -2,9 +2,13 @@
 const store = require("./store");
 
 // Creación de funciones.
-function addMessage(chat, user, message) {
+function addMessage(chat, user, message, file) {
     // Utilizacion de promesas.
     return new Promise((resolve, reject) => {
+        const fileUrl = '';
+        if(file){
+            fileUrl = 'http://localhost:3000/app/files/' + file.filename;
+        }
         if(!user){
             console.error("[ERROR]", "Usuario no encontrado.");
             return reject('Usuario no encontrado.');
@@ -23,7 +27,8 @@ function addMessage(chat, user, message) {
                 chat : chat,
                 user: user,
                 message: message,
-                date: new Date()
+                date: new Date(),
+                file: fileUrl
             };
             
             store.add(fullMessage);

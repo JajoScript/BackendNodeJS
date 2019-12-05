@@ -9,7 +9,7 @@ const router = express.Router();
 
 // Instanciación de multer.
 const upload = multer({
-    dest: 'uploads/',
+    dest: 'public/files/',
 });
 
 // Utilización de las rutas.
@@ -26,7 +26,7 @@ router.get('/', (request, response) => {
 });
 
 router.post('/', upload.single('file'), (request, response) => {
-    controller.addMessage(request.body.chat ,request.body.user, request.body.message)
+    controller.addMessage(request.body.chat ,request.body.user, request.body.message, request.file)
     .then((fullMessage)=>{
         Response.success(request, response, fullMessage, 201);
     })

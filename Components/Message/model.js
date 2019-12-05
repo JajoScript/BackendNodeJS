@@ -19,6 +19,7 @@ const MySchema = new Schema({
         required : true
     },
     date : Date,
+    file: String,
 });
 
 // Instanciacion del modelo.
