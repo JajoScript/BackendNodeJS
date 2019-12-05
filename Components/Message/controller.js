@@ -1,5 +1,6 @@
 // Importacion de modulos.
 const store = require("./store");
+const socket = require('../../socket').socket;
 
 // Creación de funciones.
 function addMessage(chat, user, message, file) {
@@ -32,6 +33,8 @@ function addMessage(chat, user, message, file) {
             };
             
             store.add(fullMessage);
+
+            socket.io.emit('message', fullMessage);
             resolve(fullMessage);
         }
     });

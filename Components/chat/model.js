@@ -6,9 +6,9 @@ const Schema = mongoose.Schema;
 
 // Instanciación del esquema.
 const MySchema = new Schema({
-    users:[
+    users:{
         type: Schema.ObjectId,
-    ]
+    }
 });
 
 // Instanciacion del modelo.
