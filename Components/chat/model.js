@@ -6,19 +6,13 @@ const Schema = mongoose.Schema;
 
 // Instanciación del esquema.
 const MySchema = new Schema({
-    user : {
+    users:[
         type: Schema.ObjectId,
-        ref: 'User'
-    },
-    message: {
-        type: String,
-        required : true
-    },
-    date : Date,
+    ]
 });
 
 // Instanciacion del modelo.
-const model = mongoose.model('Messages', MySchema);
+const model = mongoose.model('chat', MySchema);
 
 // Exportación del esquema.
 module.exports = model;
