@@ -139,3 +139,26 @@ En este ejemplo estamos usando una ruta *patch* para modificar un dato, dato el 
     console.log(request.params.id);
 
 Usando **request.params.id** es que podemos tener el dato entregado por la url.
+
+***
+### Manejo de archivos.
+Muy lindo y todo el utilizar texto para mandar mensajes, pero a veces en necesario mandar una foto, un video, un pdf. Todos estos archivos terminan convirtiendose en texto el cual podemos manejar utilizando un packete externo llamado **Multer**.
+Lo instalamos con el comando: 
+
+    $npm i multer
+
+Multer permite el manejo de archivos de manera sencilla en el disco.
+
+Para poder crear una instancia de Multer utilizamos las siguientes lineas de codigo.
+
+    const upload = multer({
+        dest: 'uploads/',
+    });
+
+En este ejemplo estamos utilizando *upload* como nuestra instancia de *Multer*, le pasamos como parametro *dest*(que hace referencia a *destino*) y como valor *'uploads/* haciendo referencia al directorio donde queremos guardar dichos archivos.
+
+Luego de esto es necesario utilizar *Multer* como un MiddleWare de Express como en el siguiente ejemplo.
+
+    router.post('/', upload.single('file'), (request, response) => { ... };
+
+Tan sencillo como pasarlo de parametro en la función, para que *multer* sepa de donde sacar el archivo agregamos el metrodo **.single()** y que el archivo se llama **'file'**.

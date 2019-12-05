@@ -1,10 +1,16 @@
 // Importación de modulos.
 const express = require('express');
+const multer = require('multer');
 const Response = require('../../Network/response');
 const controller = require("./controller");
 
 // Creacion del router.
 const router = express.Router();
+
+// Instanciación de multer.
+const upload = multer({
+    dest: 'uploads/',
+});
 
 // Utilización de las rutas.
 router.get('/', (request, response) => {
@@ -19,7 +25,7 @@ router.get('/', (request, response) => {
     });
 });
 
-router.post('/', (request, response) => {
+router.post('/', upload.single('file'), (request, response) => {
     controller.addMessage(request.body.chat ,request.body.user, request.body.message)
     .then((fullMessage)=>{
         Response.success(request, response, fullMessage, 201);
