@@ -17,8 +17,8 @@ router.post('/', (request, response) => {
         });
 });
 
-router.get('/', (request, response) => {
-    controller.listChat(request.body.userID)
+router.get('/:userId', (request, response) => {
+    controller.listChat(request.params.userId)
         .then(users => {
             Response.success(request, response, users, 201);
         })

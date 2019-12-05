@@ -6,6 +6,10 @@ const Schema = mongoose.Schema;
 
 // Instanciación del esquema.
 const MySchema = new Schema({
+    chat : {
+        type: Schema.ObjectId,
+        ref: 'Chat'
+    },
     user : {
         type: Schema.ObjectId,
         ref: 'User'
