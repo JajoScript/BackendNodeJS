@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const socket = require('./socket');
 const router = require('./Network/routes');
@@ -14,6 +15,7 @@ const db = require('./db');
 db("mongodb+srv://jajoscript:1234@cluster0-1ojwl.mongodb.net/Telegrom?retryWrites=true&w=majority");
 
 // Añadir configuración con body-parser.
+app.use(cors());
 app.use(bodyParser.json()); // Agrega el uso de json.
 
 // Inicializar socket.
